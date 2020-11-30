@@ -23,4 +23,16 @@ public class StudentService {
     public Student getStudentsByName(String name) {
         return repo.findByName(name);
     }
+
+    public void deleteStudent(int id) {
+        repo.deleteById(id);
+    }
+
+    public Student updateStudent(Student student) {
+        Student existingStudent = repo.findById(student.id).orElse(null);
+        existingStudent.name = student.name;
+        existingStudent.grade = student.grade;
+        //this will cause a race condition
+        return repo.save(existingStudent);
+    }
 }
