@@ -15,4 +15,8 @@ public class StudentService {
     public Student saveStudent(Student student) {
         return repo.save(student);
     }
+
+    public Student getStudentById(int id) {
+        return repo.findById(id).orElse(null);
+    }
 }
