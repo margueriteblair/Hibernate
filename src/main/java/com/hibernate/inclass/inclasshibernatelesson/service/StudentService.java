@@ -19,4 +19,8 @@ public class StudentService {
     public Student getStudentById(int id) {
         return repo.findById(id).orElse(null);
     }
+
+    public Student getStudentsByName(String name) {
+        return repo.findByName(name);
+    }
 }
